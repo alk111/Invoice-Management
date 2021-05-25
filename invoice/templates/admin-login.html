@@ -1,0 +1,52 @@
+{% extends 'navigation.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin-Login</title>
+</head>
+{% block body %}
+<body>
+	
+	{%  ifequal error 'no'  %}
+
+	<script type="text/javascript">
+		alert('LOGGED IN SUCCESSFULLY!');
+		window.location=('{% url 'admin_nav'  %}');
+	</script>
+
+	{% endifequal %}
+
+	{%  ifequal error 'yes'  %}
+
+	<script type="text/javascript">
+		alert('INVALID LOGIN PLEASE TRY AGAIN !');
+	</script>
+
+	{% endifequal %}
+
+	<div class="container mt-5" style="font-family: 'monotype corsiva'">
+		<div class="row">
+			<div class="col-sm-6">
+				
+			</div>
+
+			<div class="col-sm-6" style="background-color: whitesmoke">
+				<h2  >Admin Login</h2>
+				<HR>
+				<form method="post">
+					{% csrf_token %}
+				<label>User Name</label>
+				<input class="form-control" type="text" name="uname" placeholder="Enter Username">
+				<label>Password</label>
+				<input class="form-control"  type="password" name="pwd" placeholder="Enter Password">	
+				<input type="submit" class="btn btn-danger mt-2" value="Login">
+
+				</form>
+					
+			</div>
+		</div>
+		
+	</div>
+</body>
+{% endblock %}
+</html>

@@ -1,0 +1,56 @@
+{% extends 'user_nav.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+{% block body %}
+<body>
+
+	{%  ifequal error 'no'  %}
+
+	<script type="text/javascript">
+		alert('PASSWORD CHANGED SUCCESSFULLY!');
+		window.location=('{% url 'login'  %}');
+	</script>
+
+	{% endifequal %}
+
+	{%  ifequal error 'yes'  %}
+
+	<script type="text/javascript">
+		alert(' PLEASE TRY AGAIN !');
+	</script>
+
+	{% endifequal %}
+
+	<div class="container mt-5" style="font-family: 'monotype corsiva'">
+		<div class="row">
+			<div class="col-sm-6">
+				
+			</div>
+
+			<div class="col-sm-6" style="background-color: whitesmoke">
+				<h2  >Change Password</h2>
+				<HR>
+				<form method="post">
+					{% csrf_token %}
+				<label>Old Password</label>
+				<input class="form-control" type="password" name="pwd" placeholder="Enter Old Password">
+				<label>New Password</label>
+				<input class="form-control" type="password" name="new_pwd" placeholder="Enter New Password">
+				<label>New Password</label>
+				<input class="form-control"  type="password" name="cnfrm_pwd" placeholder="Renter New Password">	
+				<input type="submit" class="btn btn-danger mt-2" value="Change Password">
+
+				</form>
+					
+			</div>
+		</div>
+		
+	</div>
+
+</body>
+{% endblock %}
+</html>

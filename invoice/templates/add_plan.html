@@ -1,0 +1,61 @@
+{% extends 'user_nav.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+{% block body %}
+<body>
+	{%  ifequal error 'no'  %}
+
+	<script type="text/javascript">
+		alert('Plan ADDED SUCCESSFULLY!');
+		window.location=('{% url 'Add_Plan'  %}');
+	</script>
+
+	{% endifequal %}
+
+	{%  ifequal error 'yes'  %}
+
+	<script type="text/javascript">
+		alert(' PLEASE TRY AGAIN !');
+	</script>
+
+	{% endifequal %}
+
+	<div class="container mt-5" style="font-family: 'monotype corsiva';color: red">
+			<div class="col-sm-6">
+				
+				<HR>
+				<form method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+
+				<label>Plan</label>
+					<input class="form-control" type="text" name="plan" placeholder="plan" required><br>
+
+				<label>Billing Period</label>
+					<select name="billing_period" class="form-control" required>
+						<option value="1Month">1Month</option>
+						<option value="6Month">6Month</option>
+						<option value="1Year">1Year</option>
+					</select><br>
+
+				<label>Price</label>
+					<input class="form-control" type="text" name="price" placeholder="price" required><br>
+
+				<label>Pricing Model</label>
+					<input class="form-control" type="text" name="pricing_model" placeholder="pricing model" required><br>
+
+				<input type="submit" class="btn btn-danger mt-2" value="SUBMIT">
+
+				</form><br>
+					
+			</div>
+		</div>
+		
+	</div>
+
+</body>
+{% endblock %}
+</html>

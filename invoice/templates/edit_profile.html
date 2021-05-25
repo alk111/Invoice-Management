@@ -1,0 +1,61 @@
+{% extends 'user_nav.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+{% block body %}
+<body>
+
+	{%  ifequal error 'false'  %}
+
+	<script type="text/javascript">
+		alert('PROFILE UPDATED SUCCESSFULLY!');
+		window.location=('{% url 'user_profile'  %}');
+	</script>
+
+	{% endifequal %}
+
+	{%  ifequal error 'true'  %}
+
+	<script type="text/javascript">
+		alert(' PLEASE TRY AGAIN !');
+	</script>
+
+	{% endifequal %}
+
+<div class="container mt-5" style="font-family: 'monotype corsiva';color: green">
+			<div class="col-sm-6">
+				
+				<HR>
+				<form method="post">
+					{% csrf_token %}
+				<label>FIRST NAME</label>
+					<input class="form-control" type="text" name="firstname" value="{{data.user.first_name}}"><br>
+				<label>LAST NAME</label>
+					<input class="form-control"  type="text" name="lastname" value="{{data.user.last_name}}"><br>	
+				<label>CONTACT NO.</label>
+					<input class="form-control" type="text" name="contact" value="{{data.contact}}"><br>
+				<label>Company</label>
+					<input class="form-control"  type="text" name="company" value="{{data.company}}"><br>
+				<label>Prefferred Currency</label>
+					<select name="currency" class="form-control">
+						<option value="{{data.currency}}">INR</option>
+						<option value="{{data.currency}}">USD</option>
+					</select><br>
+				<label>EMAIL ADDRESS</label>
+					<input class="form-control" type="text" name="eid" value="{{data.user.username}}"><br>
+				
+					<input type="submit" class="btn btn-success mt-2" value="Update" href="{% url 'edit_profile'  %}">
+
+				</form><br>
+					
+			</div>
+		</div>
+		
+	</div>
+
+</body>
+{% endblock %}
+</html>

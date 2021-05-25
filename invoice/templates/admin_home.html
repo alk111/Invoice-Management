@@ -1,0 +1,47 @@
+{% extends 'admin_nav.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin-Home</title>
+	
+</head>
+
+{% block body %}
+<body>
+	
+	<div class="row d-flex justify-content-around" style="margin-top: 50px">
+		<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+		  <div class="card-header" style="text-align: center"><b>Pending Notes</b></div>
+		  <div class="card-body">
+		    <h2 class="card-title" style="text-align: center">{{pn}}</h2>
+		   	<p class="card-text"><a href="{% url 'pending_notes' %}" style="color: white" ><em>Number Of Pending Notes</em></a></p>
+		  </div>
+		</div>
+		<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+		  <div class="card-header" style="text-align: center"><b>Regected Notes</b></div>
+		  <div class="card-body">
+		    <h2 class="card-title" style="text-align: center">{{re}}</h2>
+		   	<p class="card-text"><a href="{% url 'rejected_notes' %}" style="color: white" ><em>Number Of rejected Notes</em></a></p>
+		  </div>
+		</div>
+		<div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+		  <div class="card-header" style="text-align: center"><b>Accepted Notes</b></div>
+		  <div class="card-body">
+		    <h2 class="card-title" style="text-align: center">{{ac}}</h2>
+		   	<p class="card-text"><a href="{% url 'accepted_notes' %}" style="color: white" ><em>Number Of Accepted Notes</em></a></p>
+		  </div>
+		</div>
+		<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+		  <div class="card-header" style="text-align: center"><b>All Notes</b></div>
+		  <div class="card-body">
+		    <h2 class="card-title" style="text-align: center">{{al}}</h2>
+		   	<p class="card-text"><a href="#" style="color: white" ><em>All Notes</em></a></p>
+		  </div>
+		</div>
+		
+	</div>
+	
+</body>
+{% endblock %}
+</html>
